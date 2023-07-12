@@ -10,7 +10,7 @@ struct Employee
 class LoadMan
 {
   private:
-  std::ofstream *m_pFile;
+  const char *m_pFName;
   public:
     LoadMan();
     ~LoadMan();

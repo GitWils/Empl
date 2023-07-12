@@ -15,7 +15,7 @@ int main()
   struct Employee acc, acc2, acc3;
 
   LoadMan lmngr;
-  lmngr.ClearFile();
+  /*lmngr.ClearFile();
 
   strcpy(acc.name, "Рябченко Юрій");
   acc.id = 5;
@@ -28,7 +28,7 @@ int main()
 
   lmngr.Save(acc);
   lmngr.Save(acc2);
-  lmngr.Save(acc3);
+  lmngr.Save(acc3);*/
 
   return 0;
 }
