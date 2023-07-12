@@ -14,8 +14,8 @@ int main()
 {
   struct Employee acc, acc2, acc3;
 
-  LoadMan LMngr;
-  LMngr.ClearFile();
+  LoadMan lmngr;
+  lmngr.ClearFile();
 
   strcpy(acc.name, "Рябченко Юрій");
   acc.id = 5;
@@ -26,41 +26,9 @@ int main()
   strcpy(acc3.name, "Рябченко О.М.");
   acc3.id = 7;
 
-  LMngr.Save(acc);
-  LMngr.Save(acc2);
-  LMngr.Save(acc3);
+  lmngr.Save(acc);
+  lmngr.Save(acc2);
+  lmngr.Save(acc3);
 
-  /*ofstream outbal("balance", ios::out | ios::binary);
-  if(!outbal) {
-    cout << "Cannot open file.\n";
-    return 1;
-  }
-
-  outbal.write((char *) &acc, sizeof(struct MyRecord));
-  outbal.write((char *) &acc2, sizeof(struct MyRecord));
-  outbal.close();
-
-  ifstream inbal("balance", ios::in | ios::binary);
-  if(!inbal) {
-    cout << "Cannot open file.\n";
-    return 1;
-  }
-
-  inbal.read((char *) &acc, sizeof(struct MyRecord));
-  inbal.read((char *) &acc2, sizeof(struct MyRecord));
-
-  cout << acc.name << endl;
-  cout << "Account # " << acc.account_num;
-  cout.precision(2);
-  cout.setf(ios::fixed);
-  cout << endl << "Balance: $" << acc.balance << endl;
-
-  cout << acc2.name << endl;
-  cout << "Account # " << acc2.account_num;
-  cout.precision(2);
-  cout.setf(ios::fixed);
-  cout << endl << "Balance: $" << acc2.balance << endl;
-
-  inbal.close();*/
   return 0;
 }
