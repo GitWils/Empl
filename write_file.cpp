@@ -1,30 +1,21 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "employee.h"
 #include "lmanager.h"
 using namespace std;
-
-struct MyRecord {
-  char name[200];
-  double balance;
-  unsigned long account_num;
-};
 
 int main()
 {
   struct Employee acc, acc2, acc3;
 
+  cout << "Employee has " <<sizeof(Employee) << " bytes\n";
   LoadMan lmngr;
   /*lmngr.ClearFile();
 
-  strcpy(acc.name, "Рябченко Юрій");
-  acc.id = 5;
-
-  strcpy(acc2.name, "Рябченко Соломія Юрівна");
-  acc2.id = 6;
-
-  strcpy(acc3.name, "Рябченко О.М.");
-  acc3.id = 7;
+  acc = Employee("Рябченко Юрій", 3, 100);
+  acc2 = Employee("Рябченко Соломія Юрівна", 5, 100);
+  acc3 = Employee("Рябченко О.М.", 6, 100);
 
   lmngr.Save(acc);
   lmngr.Save(acc2);

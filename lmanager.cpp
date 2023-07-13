@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "employee.h"
 #include "lmanager.h"
 
 LoadMan::LoadMan():m_pFName("data")
@@ -16,7 +17,7 @@ LoadMan::LoadMan():m_pFName("data")
   while(file.good())
   {
     i++;
-    cout << "№" << empl.id<< " " << empl.name << " найден" << endl;
+    cout << "форма №" << empl.getForm() << " " << empl.getName() << " найден" << endl;
     file.read((char *) &empl, sizeof(struct Employee));
   }
   file.close();
@@ -36,7 +37,7 @@ void LoadMan::Save(Employee &empl)
     return;
   }
   file.write((char *) &empl, sizeof(struct Employee));
-  cout << "Запись " << empl.name << " сохранена\n";
+  cout << "Запись " << empl.getName() << " сохранена\n";
   file.close();
 }
 
