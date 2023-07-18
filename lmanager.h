@@ -6,7 +6,7 @@ class LoadMan
   private:
     const char *m_pFName;
   public:
-    LoadMan();
+    LoadMan(std::vector<Employee> &workers);
     ~LoadMan();
     void Save(Employee &e);
     void ClearFile();

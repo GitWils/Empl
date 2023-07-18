@@ -1,12 +1,13 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "employee.h"
 #include "lmanager.h"
 
-LoadMan::LoadMan():m_pFName("data")
+LoadMan::LoadMan(std::vector<Employee> &workers):m_pFName("data")
 {
   using namespace std;
-  cout << "Loading from file " << m_pFName << endl;
+  cout << "Loading records from file \"" << m_pFName << "\"...\n";
   ifstream file(m_pFName, ios::in | ios::binary);
   if(!file) {
     cout << "Cannot open file \"" << m_pFName << "\".\n";
@@ -17,7 +18,7 @@ LoadMan::LoadMan():m_pFName("data")
   while(file.good())
   {
     i++;
-    cout << "форма №" << empl.getForm() << " " << empl.getName() << " найден" << endl;
+    workers.push_back(empl);
     file.read((char *) &empl, sizeof(struct Employee));
   }
   file.close();
