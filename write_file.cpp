@@ -5,29 +5,19 @@
 #include "lmanager.h"
 using namespace std;
 
+void init(LoadMan &lm, vector <Employee> &workers);
+
 int main()
 {
   struct Employee acc, acc2, acc3;
 
-  cout << "Employee has " << sizeof(Employee) << " bytes\n";
-  /*acc = Employee("Рябченко Юрій", 2, 9);
-  acc.updateTimestamp();
-  acc2 = Employee("Рябченко Соломія Юрівна", 2, 100);
-  acc2.updateTimestamp();
-  acc3 = Employee("Рябченко О.М.", 3, 100);
-  acc3.updateTimestamp();
-  vector <Employee> workers;
-  workers.push_back(acc);
-  workers.push_back(acc2);
-  workers.push_back(acc3);
-  cout << "From vector:\n";
-  for(auto i = workers.begin(); i != workers.end(); i++)
-  {
-    cout << i->getName() << endl;
-  }*/
-
+  cout << "Employee has " << sizeof(Employee) << " bytes for one\n";
   vector <Employee> workers;
   LoadMan lmngr(workers);  
+
+  //uncoment line for first run use database initialising
+  //init(lmngr, workers);
+
   for(auto i = workers.begin(); i != workers.end(); i++)
   {
     cout << "№" << i->getNomenclature() << " " << i->getName() << " "
@@ -35,12 +25,25 @@ int main()
     time_t time = i->getModified();
     cout << "Запис оновлено " << ctime(&time);
   }
-  //lmngr.ClearFile();
 
-
-  //lmngr.Save(acc);
-  //lmngr.Save(acc2);
-  //lmngr.Save(acc3);
 
   return 0;
+}
+
+void init(LoadMan &lm, vector <Employee> &workers)
+{
+  //creating data samples
+  struct Employee acc, acc2, acc3;
+  acc = Employee("Кириченко Денис", 2, 9);
+  acc.updateTimestamp();
+  acc2 = Employee("Петренко Микита Михайлович", 2, 100);
+  acc2.updateTimestamp();
+  acc3 = Employee("Яковенко О.М.", 3, 100);
+  acc3.updateTimestamp();
+  
+  //saving data samples
+  lm.ClearFile();
+  lm.Save(acc);
+  lm.Save(acc2);
+  lm.Save(acc3);
 }
