@@ -5,10 +5,12 @@ class LoadMan
 {
   private:
     const char *m_pFName;
+    LoadMan() {};
   public:
     LoadMan(std::vector<Employee> &workers);
     ~LoadMan();
-    void Save(Employee &e);
+    bool Save(Employee &e);
+    bool Save(std::vector<Employee> &workers);
     void ClearFile();
 };
 

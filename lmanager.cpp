@@ -29,17 +29,35 @@ LoadMan::~LoadMan()
 {
 }
 
-void LoadMan::Save(Employee &empl)
+bool LoadMan::Save(Employee &empl)
 {
   using namespace std;
   ofstream file(m_pFName , ios::out | ios::binary | ios::app);
   if(!file) {
     cout << "Cannot open file.\"" << m_pFName << "\"\n";
-    return;
+    return false;
   }
   file.write((char *) &empl, sizeof(struct Employee));
   cout << "Запись " << empl.getName() << " сохранена\n";
   file.close();
+  return true;
+}
+
+bool LoadMan::Save(std::vector <Employee> &workers)
+{
+  using namespace std;
+  ofstream file(m_pFName , ios::out | ios::binary | ios::app);
+  if(!file) {
+    cout << "Cannot open file.\"" << m_pFName << "\"\n";
+    return false;
+  }
+  for(long unsigned int i = 0; i < workers.size(); i++)
+  {
+    file.write((char *) &workers[i], sizeof(struct Employee));
+    cout << "Запись " << workers[i].getName() << " сохранена\n";
+  }
+  file.close();
+  return true;
 }
 
 void LoadMan::ClearFile()
