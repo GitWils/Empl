@@ -7,12 +7,14 @@ static const int NAMESIZE = 200;
 Employee::Employee(const char * name, 
     unsigned short int form, 
     unsigned short int nomenclature, 
-    long int date)
+    std::time_t birthday,
+    std::time_t date)
 {
   std::strncpy(m_name, name, NAMESIZE);
   m_name[NAMESIZE - 1] = '\0';
   m_form = form;
   m_nomenclature = nomenclature;
+  m_birthDate = birthday;
   m_date = date;
 }
 
@@ -34,6 +36,11 @@ unsigned short int Employee::getNomenclature()
 std::time_t Employee::getModified()
 {
   return m_datechanged;
+}
+
+std::time_t Employee::getBirthDate()
+{
+  return m_birthDate;
 }
 
 void Employee::updateTimestamp()
